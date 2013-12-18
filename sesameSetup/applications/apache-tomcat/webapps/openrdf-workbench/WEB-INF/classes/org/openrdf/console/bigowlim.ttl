@@ -1,0 +1,31 @@
+#
+# Sesame configuration template for a owlim repository
+#
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rep: <http://www.openrdf.org/config/repository#>.
+@prefix sr: <http://www.openrdf.org/config/repository/sail#>.
+@prefix sail: <http://www.openrdf.org/config/sail#>.
+@prefix owlim: <http://www.ontotext.com/trree/owlim#>.
+
+[] a rep:Repository ;
+   rep:repositoryID "{%Repository ID|bigowlimTest%}" ;
+   rdfs:label "{%Repository title|BigOWLIM Test store%}" ;
+   rep:repositoryImpl [
+      rep:repositoryType "openrdf:SailRepository" ;
+      sr:sailImpl [
+         sail:sailType "owlim:Sail" ;
+         owlim:ruleset "{%Set of rules|owl-max|EDIT_THE_VALUE_IN_bigowlim.ttl|../ontotext_owlim/Rules_custom_big.pie%}" ;
+         owlim:noPersist "{%No Persistence|true|false%}" ;
+         owlim:storage-folder "{%Storage folder|owlimTest-storage%}" ;
+		 owlim:base-URL "http://example.org/owlim#" ;
+         owlim:entity-index-size "{%entity index size|200000%}" ;
+		 owlim:repository-type "file-repository" ;
+		 owlim:defaultNS "{%defaultNS(';'delimited)|<http://www.w3.org/2002/07/owl#>;<http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#>;<http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#>;<http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CRMdig.rdfs#>;<http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#>;<http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CRMdig.rdfs#>;<http://www.w3.org/2004/02/skos/core#>%}";
+		 owlim:imports "{%imports(';' delimited)|../ontotext_owlim/ontology/owl.rdfs;../ontotext_owlim/ontology/3D-COFORM_CIDOC-CRM.rdfs;../ontotext_owlim/ontology/3D-COFORM_CRMext.rdfs;../ontotext_owlim/ontology/3D-COFORM_CRMdig.rdfs;../ontotext_owlim/ontology/crm_reasoning.rdf;../ontotext_owlim/ontology/crmdig_reasoning.rdf;../ontotext_owlim/ontology/skos.rdf%}" ;
+		 
+		 owlim:ftsIndexPolicy "onStartup" ;
+		 owlim:fts-memory "20m" ;
+		 owlim:ftsLiteralsOnly "false"
+
+      ]
+   ].

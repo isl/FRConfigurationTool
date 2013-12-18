@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<!--
+CRMext 2.1 Encoded in RDFS
+
+RDFS created by FORTH-ICS July 13, 2012
+
+Encoding Rules:
+1. The RDF spelling rules do not allow blanks. Hence we have replaced them by underscores.
+   The blank between the concept identifier and concept name is replaced by dot.
+   For instance "D7.Digital_Machine_Event" or "P2B.is_type_of".
+
+2. RDF does not allow to instantiate properties beginning from a range value.
+   Therefore, each CRMdig property is represented as two RDFS properties.
+   For instance "L2 used as source (was source for)" is represented as:
+   "L2F.used_as_source" for the domain to range direction and "L2B.was_source_for" for the range to domain direction.
+
+3. RDF does not support properties of properties, therefore, users may create their own
+   subProperties for CRM properties that have a type property such as "P3 has note":
+   Instead of P3 has note (P3.1 has type : parts description) declare
+   <rdf:Property rdf:ID="P3F.parts_description">
+      <rdfs:domain rdf:resource="#E1.CRM_Entity"/>
+      <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+      <rdfs:subPropertyOf rdf:resource="#P3F.has_note"/>
+   </rdf:Property>
+-->
+
+<rdf:RDF xml:lang="en" 
+			xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+			xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+			xml:base="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs">
+
+<rdfs:Class rdf:ID="C1.Object">
+	<rdfs:comment>
+	</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#E70.Thing"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:ID="E73.Information_Object">
+	<rdfs:subClassOf rdf:resource="#C1.Object"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="E26.Physical_Feature">
+	<rdfs:subClassOf rdf:resource="#C1.Object"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="E24.Physical_Man-Made_Thing">
+	<rdfs:subClassOf rdf:resource="#C1.Object"/>
+</rdfs:Class>
+
+<rdf:Property rdf:ID="F1F.is_derivative_of">
+<rdfs:comment>
+This property associates an instance of E89 Propositional Object which modifies the content of another instance of E89 Propositional Object with the latter. 
+This property is a shortcut of D1 Digital Object L21B was derivation source for D3 Formal Derivation L22F created derivative D1 Digital Object. 
+</rdfs:comment>
+	<rdfs:domain rdf:resource="#E89.Propositional_Object"/>
+	<rdfs:range rdf:resource="#E89.Propositional_Object"/>
+	<rdfs:subPropertyOf rdf:resource="#P130F.shows_features_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F1B.has_derivative">
+	<rdfs:domain rdf:resource="#E89.Propositional_Object"/>
+	<rdfs:range rdf:resource="#E89.Propositional_Object"/>
+	<rdfs:subPropertyOf rdf:resource="#P130B.features_are_also_found_on"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F3.is_same_as">
+<rdfs:comment>
+This property associates instances of E70.Thing with other instances of the same class that are copies of the first 
+or the first is copy of the latter. In this way a thing is connected with same things.
+</rdfs:comment>
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F4F.is_composed_of">
+<rdfs:comment>
+This property associates instances of E70.Thing with its parts. It gathers the properties: P46F.is_composed_of,P106F.is_composed_of,P148F.has_component 
+</rdfs:comment>
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F4B.is_component_of">
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F5F.consists_of_shows_features_of">
+<rdfs:comment>
+This property associates instances of E70.Thing with its parts and copies. It gathers the properties: P46F.is_composed_of,P106F.is_composed_of,P148F.has_component, P130F.shows_features_of,P130B.features_are_also_found_on 
+</rdfs:comment>
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F5B.forms_part_of_shows_features_of">
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="P88F.consists_of">
+	<rdfs:subPropertyOf rdf:resource="#P89B.contains"/>
+</rdf:Property>
+<rdf:Property rdf:ID="P88B.forms_part_of">
+	<rdfs:subPropertyOf rdf:resource="#P89F.falls_within"/>
+</rdf:Property>
+
+<!-- We make the E5 Event subclass of E52 Time-Span. In case we want to export our CIDOC-CRM instances 
+we will need to make a filter that will trace the links that are inherited 
+from E52 to E5 and add them through a P4F.has_time-span link -->
+<rdfs:Class rdf:ID="E5.Event">
+	<rdfs:subClassOf rdf:resource="#E52.Time-Span"/>
+</rdfs:Class>
+
+<rdf:Property rdf:ID="P14F.1_carried_out_by_as_author">
+<rdfs:comment>Since rdf doesnot support properties of properties, we define P14F.1_carried_out_by_as_author as subclass of P14F.carried_out_by.</rdfs:comment>
+	<rdfs:domain rdf:resource="#E7.Activity"/>
+	<rdfs:range rdf:resource="#E39.Actor"/>
+	<rdfs:subPropertyOf rdf:resource="#P14F.carried_out_by"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="P14B.1_performed_as_author">
+	<rdfs:domain rdf:resource="#E39.Actor"/>
+	<rdfs:range rdf:resource="#E7.Activity"/>
+	<rdfs:subPropertyOf rdf:resource="#P14B.performed"/>
+</rdf:Property>
+<rdf:Property rdf:ID="P14F.1_carried_out_by_as_press">
+<rdfs:comment>Since rdf doesnot support properties of properties, we define P14F.1_carried_out_by_as_press as subclass of P14F.carried_out_by.</rdfs:comment>
+	<rdfs:domain rdf:resource="#E7.Activity"/>
+	<rdfs:range rdf:resource="#E39.Actor"/>
+	<rdfs:subPropertyOf rdf:resource="#P14F.carried_out_by"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="P14B.1_performed_as_press">
+	<rdfs:domain rdf:resource="#E39.Actor"/>
+	<rdfs:range rdf:resource="#E7.Activity"/>
+	<rdfs:subPropertyOf rdf:resource="#P14B.performed"/>
+</rdf:Property>
+<rdf:Property rdf:ID="P14F.1_carried_out_by_as_maker">
+<rdfs:comment>Since rdf doesnot support properties of properties, we define P14F.1_carried_out_by_as_press as subclass of P14F.carried_out_by.</rdfs:comment>
+	<rdfs:domain rdf:resource="#E7.Activity"/>
+	<rdfs:range rdf:resource="#E39.Actor"/>
+	<rdfs:subPropertyOf rdf:resource="#P14F.carried_out_by"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="P14B.1_performed_as_maker">
+	<rdfs:domain rdf:resource="#E39.Actor"/>
+	<rdfs:range rdf:resource="#E7.Activity"/>
+	<rdfs:subPropertyOf rdf:resource="#P14B.performed"/>
+</rdf:Property>
+
+<!-- PERSON ROLE TYPES P107.1 kind of member is used to specify the type of membership or the role the member has in the group -->
+		<rdf:Property rdf:ID="P107F.1_has_current_or_former_researcher">
+				<rdfs:label>researcher</rdfs:label>
+				<rdfs:domain rdf:resource="#E74.Group"/>
+				<rdfs:range rdf:resource="#E39.Actor"/>
+				<rdfs:subPropertyOf rdf:resource="#P107F.has_current_or_former_member"/>
+		</rdf:Property>
+		<rdf:Property rdf:ID="P107B.1_is_current_or_former_researcher_of">
+				<rdfs:domain rdf:resource="#E39.Actor"/>
+				<rdfs:range rdf:resource="#E74.Group"/>
+				<rdfs:subPropertyOf rdf:resource="#P107B.is_current_or_former_member_of"/>
+		</rdf:Property>
+		
+		<rdf:Property rdf:ID="P107F.1_has_current_or_former_photographer">
+				<rdfs:label>photographer</rdfs:label>
+				<rdfs:domain rdf:resource="#E74.Group"/>
+				<rdfs:range rdf:resource="#E39.Actor"/>
+				<rdfs:subPropertyOf rdf:resource="#P107F.has_current_or_former_member"/>
+		</rdf:Property>
+		<rdf:Property rdf:ID="P107B.1_is_current_or_former_photographer_of">
+				<rdfs:domain rdf:resource="#E39.Actor"/>
+				<rdfs:range rdf:resource="#E74.Group"/>
+				<rdfs:subPropertyOf rdf:resource="#P107B.is_current_or_former_member_of"/>
+		</rdf:Property>
+		
+		<rdf:Property rdf:ID="P107F.1_has_current_or_former_programmer">
+				<rdfs:label>programmer</rdfs:label>
+				<rdfs:domain rdf:resource="#E74.Group"/>
+				<rdfs:range rdf:resource="#E39.Actor"/>
+				<rdfs:subPropertyOf rdf:resource="#P107F.has_current_or_former_member"/>
+		</rdf:Property>
+		<rdf:Property rdf:ID="P107B.1_is_current_or_former_programmer_of">
+				<rdfs:domain rdf:resource="#E39.Actor"/>
+				<rdfs:range rdf:resource="#E74.Group"/>
+				<rdfs:subPropertyOf rdf:resource="#P107B.is_current_or_former_member_of"/>
+		</rdf:Property>
+		
+		<rdf:Property rdf:ID="P107F.1_has_current_or_former_archaeologist">
+				<rdfs:label>archaeologist</rdfs:label>
+				<rdfs:domain rdf:resource="#E74.Group"/>
+				<rdfs:range rdf:resource="#E39.Actor"/>
+				<rdfs:subPropertyOf rdf:resource="#P107F.has_current_or_former_member"/>
+		</rdf:Property>
+		<rdf:Property rdf:ID="P107B.1_is_current_or_former_archaeologist_of">
+				<rdfs:domain rdf:resource="#E39.Actor"/>
+				<rdfs:range rdf:resource="#E74.Group"/>
+				<rdfs:subPropertyOf rdf:resource="#P107B.is_current_or_former_member_of"/>
+		</rdf:Property>
+		
+		<rdf:Property rdf:ID="P107F.1_has_current_or_former_trainee">
+				<rdfs:label>trainee</rdfs:label>
+				<rdfs:domain rdf:resource="#E74.Group"/>
+				<rdfs:range rdf:resource="#E39.Actor"/>
+				<rdfs:subPropertyOf rdf:resource="#P107F.has_current_or_former_member"/>
+		</rdf:Property>
+		<rdf:Property rdf:ID="P107B.1_is_current_or_former_trainee_of">
+				<rdfs:domain rdf:resource="#E39.Actor"/>
+				<rdfs:range rdf:resource="#E74.Group"/>
+				<rdfs:subPropertyOf rdf:resource="#P107B.is_current_or_former_member_of"/>
+		</rdf:Property>
+		
+		<rdf:Property rdf:ID="P107F.1_has_current_or_former_student_employee">
+				<rdfs:label>student employee</rdfs:label>
+				<rdfs:domain rdf:resource="#E74.Group"/>
+				<rdfs:range rdf:resource="#E39.Actor"/>
+				<rdfs:subPropertyOf rdf:resource="#P107F.has_current_or_former_member"/>
+		</rdf:Property>
+		<rdf:Property rdf:ID="P107B.1_is_current_or_former_student_employee_of">
+				<rdfs:domain rdf:resource="#E39.Actor"/>
+				<rdfs:range rdf:resource="#E74.Group"/>
+				<rdfs:subPropertyOf rdf:resource="#P107B.is_current_or_former_member_of"/>
+		</rdf:Property>
+
+		
+<rdf:Property rdf:ID="F6F.has_location">
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E53.Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F6B.is_location_of">
+	<rdfs:domain rdf:resource="#E53.Place"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F7F.Actor_from_Place">
+	<rdfs:domain rdf:resource="#E39.Actor"/>
+	<rdfs:range rdf:resource="#E53.Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F7B.Place_hosts_Actor">
+	<rdfs:domain rdf:resource="#E53.Place"/>
+	<rdfs:range rdf:resource="#E39.Actor"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F8F.Thing_from_Place">
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E53.Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F8B.Place_Hosts_Thing">
+	<rdfs:domain rdf:resource="#E53.Place"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F9F.Thing_from_Actor">
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E39.Actor"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F9B.Actor_is_origin_of_Thing">
+	<rdfs:domain rdf:resource="#E39.Actor"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F10F.Thing_createdIn_Event">
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E5.Event"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F10B.Event_is_origin_of_Thing">
+	<rdfs:domain rdf:resource="#E5.Event"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F11F.Actor_createdIn_Event">
+	<rdfs:domain rdf:resource="#E39.Actor"/>
+	<rdfs:range rdf:resource="#E5.Event"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F11B.Event_is_origin_of_Actor">
+	<rdfs:domain rdf:resource="#E5.Event"/>
+	<rdfs:range rdf:resource="#E39.Actor"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F12F.Event_from_Place">
+	<rdfs:domain rdf:resource="#E5.Event"/>
+	<rdfs:range rdf:resource="#E53.Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F12B.Place_hosts_Event">
+	<rdfs:domain rdf:resource="#E53.Place"/>
+	<rdfs:range rdf:resource="#E5.Event"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F13F.Event_by_Actor">
+	<rdfs:domain rdf:resource="#E5.Event"/>
+	<rdfs:range rdf:resource="#E39.Actor"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F13B.Actor_performed_Event">
+	<rdfs:domain rdf:resource="#E39.Actor"/>
+	<rdfs:range rdf:resource="#E5.Event"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F14F.Thing_from_Event">
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E5.Event"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F14B.Event_is_origin_of_Thing">
+	<rdfs:domain rdf:resource="#E5.Event"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F15F.refers_to">
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E1.CRM_Entity"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F15B.is_referred_to_by">
+	<rdfs:domain rdf:resource="#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F16F.Event_has_Material">
+	<rdfs:domain rdf:resource="#E5.Event"/>
+	<rdfs:range rdf:resource="#E57.Material"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F16B.Material_in_Event">
+	<rdfs:domain rdf:resource="#E57.Material"/>
+	<rdfs:range rdf:resource="#E5.Event"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F17F.Thing_is_made_of_Material">
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E57.Material"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F17B.Material_in_Thing">
+	<rdfs:domain rdf:resource="#E57.Material"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="F18F.Thing_P31_P16_P39_P92_Event">
+	<rdfs:domain rdf:resource="#E70.Thing"/>
+	<rdfs:range rdf:resource="#E5.Event"/>
+</rdf:Property>
+<rdf:Property rdf:ID="F18B.Event_P31_P16_P39_P92_Thing">
+	<rdfs:domain rdf:resource="#E5.Event"/>
+	<rdfs:range rdf:resource="#E70.Thing"/>
+</rdf:Property>
+
+		
+</rdf:RDF>
+

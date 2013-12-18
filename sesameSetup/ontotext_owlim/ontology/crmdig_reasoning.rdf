@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+
+<rdf:RDF xml:lang="en" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:owl = "http://www.w3.org/2002/07/owl#"
+xml:base= "http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CRMdig.rdfs#"
+>
+
+<!-- Next: relations used by reasoner -->
+
+<rdf:Description rdf:about="#L1F.digitized">
+<owl:inverseOf rdf:resource="#L1B.was_digitized_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L2F.used_as_source">
+<owl:inverseOf rdf:resource="#L2B.was_source_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L3F.used_software">
+<owl:inverseOf rdf:resource="#L3B.was_software_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L4F.used_firmware">
+<owl:inverseOf rdf:resource="#L4B.was_firmware_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L8F.copies_to">
+<owl:inverseOf rdf:resource="#L8B.is_created_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L9F.has_validity">
+<owl:inverseOf rdf:resource="#L9B.is_validation_period_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L10F.had_input">
+<owl:inverseOf rdf:resource="#L10B.was_input_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L11F.had_output">
+<owl:inverseOf rdf:resource="#L11B.was_output_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L12F.happened_on_device">
+<owl:inverseOf rdf:resource="#L12B.was_device_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L13F.used_parameters">
+<owl:inverseOf rdf:resource="#L13B.parameters_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L14F.transferred">
+<owl:inverseOf rdf:resource="#L14B.was_transferred_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L15F.has_sender">
+<owl:inverseOf rdf:resource="#L15B.was_sender_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L16F.has_receiver">
+<owl:inverseOf rdf:resource="#L16B.was_receiver_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L17F.measured_thing_of_type">
+<owl:inverseOf rdf:resource="#L17B.was_type_of_thing_measured_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L18F.has_modified">
+<owl:inverseOf rdf:resource="#L18B.was_modified_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L19F.stores">
+<owl:inverseOf rdf:resource="#L19B.is_stored_on"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L20F.has_created">
+<owl:inverseOf rdf:resource="#L20B.was_created_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L21F.used_as_derivation_source">
+<owl:inverseOf rdf:resource="#L21B.was_derivation_source_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L22F.created_derivative">
+<owl:inverseOf rdf:resource="#L22B.was_derivative_created_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L23F.used_software_or_firmware">
+<owl:inverseOf rdf:resource="#L23B.was_software_or_firmware_used_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L24F.created_logfile">
+<owl:inverseOf rdf:resource="#L24B.was_logfile_created_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L25F.located_object">
+<owl:inverseOf rdf:resource="#L25B.was_object_located_at"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L26F.had_place">
+<owl:inverseOf rdf:resource="#L26B.was_place_at"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L27F.occurred_during">
+<owl:inverseOf rdf:resource="#L27B.used_temporary_position"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L28F.has_orientation">
+<owl:inverseOf rdf:resource="#L28B.is_orientation_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L29F.has_responsible_organization">
+<owl:inverseOf rdf:resource="#L29B.is_responsible_organization_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L30F.has_operator">
+<owl:inverseOf rdf:resource="#L30B.is_operator_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L31F.has_starting_date-time">
+<owl:inverseOf rdf:resource="#L31B.was_starting_date-time_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L32F.has_ending_date-time">
+<owl:inverseOf rdf:resource="#L32B.was_ending_date-time_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L33F.has_maker">
+<owl:inverseOf rdf:resource="#L33B.is_maker_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L34F.is_position_relative_to_object">
+<owl:inverseOf rdf:resource="#L34B.is_reference_object_for_position"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L35F.is_position_relative_to_position">
+<owl:inverseOf rdf:resource="#L35B.is_reference_position_for_position"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L36F.has_coordinate_system">
+<owl:inverseOf rdf:resource="#L36B.is_coordinate_system_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L37F.has_coordinates1">
+<owl:inverseOf rdf:resource="#L37B.is_coordinates1_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L38F.has_coordinates2">
+<owl:inverseOf rdf:resource="#L38B.is_coordinates2_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L39F.has_coordinates3">
+<owl:inverseOf rdf:resource="#L39B.is_coordinates3_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L40F.has_rotation_angle">
+<owl:inverseOf rdf:resource="#L40B.is_rotation_angle_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L41F.has_azimuth">
+<owl:inverseOf rdf:resource="#L41B.is_azimuth_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L42F.has_inclination">
+<owl:inverseOf rdf:resource="#L42B.is_inclination_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L43F.annotates">
+<owl:inverseOf rdf:resource="#L43B.is_annotated_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L44F.extracts_from">
+<owl:inverseOf rdf:resource="#L44B.is_extracted_from"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L48F.created_annotation">
+<owl:inverseOf rdf:resource="#L48B.was_annotation_created_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L49F.is_primary_area_of">
+<owl:inverseOf rdf:resource="#L49B.has_primary_area"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L50F.is_propagated_area_of">
+<owl:inverseOf rdf:resource="#L50B.has_propagated_area"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L54F.is_same-as">
+<owl:inverseOf rdf:resource="#L54B.is_same-as"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#L58F.has_thumbnail">
+<owl:inverseOf rdf:resource="#L58B.is_thumbnail_of"/>
+</rdf:Description>
+
+
+
+</rdf:RDF>

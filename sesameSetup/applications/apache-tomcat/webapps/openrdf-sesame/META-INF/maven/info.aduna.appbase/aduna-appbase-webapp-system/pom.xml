@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>info.aduna.appbase</groupId>
+		<artifactId>aduna-appbase-webapp</artifactId>
+		<version>3.9.0</version>
+	</parent>
+
+	<artifactId>aduna-appbase-webapp-system</artifactId>
+	<packaging>war</packaging>
+
+	<name>Aduna AppBase: Webapp - System</name>
+	<description>System console webapp functionality.</description>
+
+	<organization>
+		<name>Aduna</name>
+		<url>http://www.aduna-software.com/</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Aduna BSD-style license</name>
+			<url>http://www.aduna-software.com/documents/legal/licenses/aduna-bsd.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>aduna-appbase-webapp-base</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>aduna-appbase-webapp-system-core</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warName>${project.artifactId}</warName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<configuration>
+					<warFile>${project.build.directory}/${project.artifactId}.war</warFile>
+					<server>localhost</server>
+					<path>/${project.artifactId}</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>spring.ide</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-eclipse-plugin</artifactId>
+						<configuration>
+							<wtpversion>1.5</wtpversion>
+							<wtpContextName>${project.artifactId}</wtpContextName>
+							<additionalBuildcommands>
+								<buildCommand>
+									<name>
+										org.springframework.ide.eclipse.core.springbuilder
+									</name>
+								</buildCommand>
+							</additionalBuildcommands>
+							<additionalProjectnatures>
+								<projectnature>
+									org.springframework.ide.eclipse.core.springnature
+								</projectnature>
+							</additionalProjectnatures>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+	<appender name="MainLog"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>..\sesame_data\OpenRDF Sesame\logs\main.log</file>
+		<encoding>UTF-8</encoding>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				..\sesame_data\OpenRDF Sesame\logs\main.log.%d{yyyy-MM-dd}
+			</FileNamePattern>
+		</rollingPolicy>
+		<layout class="info.aduna.logging.file.logback.StackTracePatternLayout"/>
+		<logreader class="info.aduna.logging.file.logback.FileLogReader" default="true" />
+	</appender>
+	
+	<appender name="UserAccessLog"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>..\sesame_data\OpenRDF Sesame\logs\useraccess.log</file>
+		<encoding>UTF-8</encoding>
+		<rollingPolicy
+					  class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				..\sesame_data\OpenRDF Sesame\logs\useraccess.log.%d{yyyy-MM-dd}
+			</FileNamePattern>
+		</rollingPolicy>
+		<layout class="info.aduna.logging.file.logback.StackTracePatternLayout"/>
+		<logreader class="info.aduna.logging.file.logback.FileLogReader" />
+	</appender>
+	
+	<appender name="AdminAccessLog"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+			  <file>..\sesame_data\OpenRDF Sesame\logs\adminaccess.log</file>
+		<encoding>UTF-8</encoding>
+		<rollingPolicy
+					  class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				..\sesame_data\OpenRDF Sesame\logs\adminaccess.log.%d{yyyy-MM-dd}
+			</FileNamePattern>
+		</rollingPolicy>
+		<layout class="info.aduna.logging.file.logback.StackTracePatternLayout"/>
+		<logreader class="info.aduna.logging.file.logback.FileLogReader" />
+	</appender>
+	
+	<logger name="info.aduna.app.loggers.useraccess" additivity="false">
+		<level value="ALL" />
+		<appender-ref ref="UserAccessLog" />
+	</logger>
+	
+	<logger name="info.aduna.app.loggers.adminaccess" additivity="false">
+		<level value="ALL" />
+		<appender-ref ref="AdminAccessLog" />
+	</logger>
+	
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="MainLog" />
+	</root>
+</configuration>

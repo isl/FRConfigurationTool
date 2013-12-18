@@ -1,0 +1,1 @@
+E55.Type--(P127F.has_broader_term)[0,n] -> E55.Type

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Class-Path: 3D-COFORM 
+ - 
+ Lucene 
+ Integration 
+ for 
+ FORTH.jar
+

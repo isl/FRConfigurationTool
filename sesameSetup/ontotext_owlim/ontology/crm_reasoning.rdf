@@ -1,0 +1,599 @@
+<?xml version="1.0"?>
+
+<rdf:RDF xml:lang="en" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:owl = "http://www.w3.org/2002/07/owl#"
+xml:base="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#"
+>
+
+<!-- Next: relations used by reasoner -->
+<owl:TransitiveProperty rdf:about="#P5F.consists_of"/>
+<owl:TransitiveProperty rdf:about="#P9F.consists_of"/>
+<owl:TransitiveProperty rdf:about="#P10F.falls_within"/>
+<owl:TransitiveProperty rdf:about="#P46F.is_composed_of"/>
+<owl:TransitiveProperty rdf:about="#P69F.is_associated_with"/>
+<owl:TransitiveProperty rdf:about="#P73F.has_translation"/>
+<owl:TransitiveProperty rdf:about="#P86F.falls_within"/>
+<owl:TransitiveProperty rdf:about="#P88F.consists_of"/>
+<owl:TransitiveProperty rdf:about="#P89F.falls_within"/>
+<owl:TransitiveProperty rdf:about="#P106F.is_composed_of"/>
+<owl:TransitiveProperty rdf:about="#P107F.has_current_or_former_member"/>
+<owl:TransitiveProperty rdf:about="#P114F.is_equal_in_time_to"/>
+<owl:TransitiveProperty rdf:about="#P115F.finishes"/>
+<owl:TransitiveProperty rdf:about="#P116F.starts"/>
+<owl:TransitiveProperty rdf:about="#P117F.occurs_during"/>
+<owl:TransitiveProperty rdf:about="#P127F.has_broader_term"/>
+<owl:TransitiveProperty rdf:about="#P130F.shows_features_of"/>
+<owl:TransitiveProperty rdf:about="#P139F.has_alternative_form"/>
+<owl:TransitiveProperty rdf:about="#P148F.has_component"/>
+<owl:TransitiveProperty rdf:about="#F1F.is_derivative_of"/>
+<owl:TransitiveProperty rdf:about="#F4F.is_composed_of"/>
+<owl:TransitiveProperty rdf:about="#F5F.consists_of_shows_features_of"/>
+
+<rdf:Description rdf:about="#P1F.is_identified_by">
+<owl:inverseOf rdf:resource="#P1B.identifies"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P2F.has_type">
+<owl:inverseOf rdf:resource="#P2B.is_type_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P4F.has_time-span">
+<owl:inverseOf rdf:resource="#P4B.is_time-span_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P5F.consists_of">
+<owl:inverseOf rdf:resource="#P5B.forms_part_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P7F.took_place_at">
+<owl:inverseOf rdf:resource="#P7B.witnessed"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P8F.took_place_on_or_within">
+<owl:inverseOf rdf:resource="#P8B.witnessed"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P9F.consists_of">
+<owl:inverseOf rdf:resource="#P9B.forms_part_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P10F.falls_within">
+<owl:inverseOf rdf:resource="#P10B.contains"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P11F.had_participant">
+<owl:inverseOf rdf:resource="#P11B.participated_in"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P12F.occurred_in_the_presence_of">
+<owl:inverseOf rdf:resource="#P12B.was_present_at"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P13F.destroyed">
+<owl:inverseOf rdf:resource="#P13B.was_destroyed_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P14F.carried_out_by">
+<owl:inverseOf rdf:resource="#P14B.performed"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P15F.was_influenced_by">
+<owl:inverseOf rdf:resource="#P15B.influenced"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P16F.used_specific_object">
+<owl:inverseOf rdf:resource="#P16B.was_used_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P17F.was_motivated_by">
+<owl:inverseOf rdf:resource="#P17B.motivated"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P19F.was_intended_use_of">
+<owl:inverseOf rdf:resource="#P19B.was_made_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P20F.had_specific_purpose">
+<owl:inverseOf rdf:resource="#P20B.was_purpose_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P21F.had_general_purpose">
+<owl:inverseOf rdf:resource="#P21B.was_purpose_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P22F.transferred_title_to">
+<owl:inverseOf rdf:resource="#P22B.acquired_title_through"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P23F.transferred_title_from">
+<owl:inverseOf rdf:resource="#P23B.surrendered_title_through"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P24F.transferred_title_of">
+<owl:inverseOf rdf:resource="#P24B.changed_ownership_through"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P25F.moved">
+<owl:inverseOf rdf:resource="#P25B.moved_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P26F.moved_to">
+<owl:inverseOf rdf:resource="#P26B.was_destination_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P27F.moved_from">
+<owl:inverseOf rdf:resource="#P27B.was_origin_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P28F.custody_surrendered_by">
+<owl:inverseOf rdf:resource="#P28B.surrendered_custody_through"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P29F.custody_received_by">
+<owl:inverseOf rdf:resource="#P29B.received_custody_through"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P30F.transferred_custody_of">
+<owl:inverseOf rdf:resource="#P30B.custody_transferred_through"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P31F.has_modified">
+<owl:inverseOf rdf:resource="#P31B.was_modified_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P32F.used_general_technique">
+<owl:inverseOf rdf:resource="#P32B.was_technique_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P33F.used_specific_technique">
+<owl:inverseOf rdf:resource="#P33B.was_used_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P34F.concerned">
+<owl:inverseOf rdf:resource="#P34B.was_assessed_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P35F.has_identified">
+<owl:inverseOf rdf:resource="#P35B.was_identified_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P37F.assigned">
+<owl:inverseOf rdf:resource="#P37B.was_assigned_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P38F.deassigned">
+<owl:inverseOf rdf:resource="#P38B.was_deassigned_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P39F.measured">
+<owl:inverseOf rdf:resource="#P39B.was_measured_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P40F.observed_dimension">
+<owl:inverseOf rdf:resource="#P40B.was_observed_in"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P41F.classified">
+<owl:inverseOf rdf:resource="#P41B.was_classified_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P42F.assigned">
+<owl:inverseOf rdf:resource="#P42B.was_assigned_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P43F.has_dimension">
+<owl:inverseOf rdf:resource="#P43B.is_dimension_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P44F.has_condition">
+<owl:inverseOf rdf:resource="#P44B.is_condition_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P45F.consists_of">
+<owl:inverseOf rdf:resource="#P45B.is_incorporated_in"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P46F.is_composed_of">
+<owl:inverseOf rdf:resource="#P46B.forms_part_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P48F.has_preffered_identifier">
+<owl:inverseOf rdf:resource="#P48B.is_preffered_identifier_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P49F.has_former_or_current_keeper">
+<owl:inverseOf rdf:resource="#P49B.is_former_or_current_keeper_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P50F.has_current_keeper">
+<owl:inverseOf rdf:resource="#P50B.is_current_keeper_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P51F.has_former_or_current_owner">
+<owl:inverseOf rdf:resource="#P51B.is_former_or_current_owner_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P52F.has_current_owner">
+<owl:inverseOf rdf:resource="#P52B.is_current_owner_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P53F.has_former_or_current_location">
+<owl:inverseOf rdf:resource="#P53B.is_former_or_current_location_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P54F.has_current_permanent_location">
+<owl:inverseOf rdf:resource="#P54B.is_current_permanent_location_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P55F.has_current_location">
+<owl:inverseOf rdf:resource="#P55B.currently_holds"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P56F.bears_feature">
+<owl:inverseOf rdf:resource="#P56B.is_found_on"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P58F.has_section_definition">
+<owl:inverseOf rdf:resource="#P58B.defines_section"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P59F.has_section">
+<owl:inverseOf rdf:resource="#P59B.is_located_on_or_within"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P62F.depicts">
+<owl:inverseOf rdf:resource="#P62B.is_depicted_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P65F.shows_visual_item">
+<owl:inverseOf rdf:resource="#P65B.is_shown_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P67F.refers_to">
+<owl:inverseOf rdf:resource="#P67B.is_referred_to_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P68F.foresees_use_of">
+<owl:inverseOf rdf:resource="#P68B.use_foreseen_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P70F.documents">
+<owl:inverseOf rdf:resource="#P70B.is_documented_in"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P71F.lists">
+<owl:inverseOf rdf:resource="#P71B.is_listed_in"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P72F.has_language">
+<owl:inverseOf rdf:resource="#P72B.is_language_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P73F.has_translation">
+<owl:inverseOf rdf:resource="#P73B.is_translation_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P74F.has_current_or_former_residence">
+<owl:inverseOf rdf:resource="#P74B.is_current_or_former_residence_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P75F.possesses">
+<owl:inverseOf rdf:resource="#P75B.is_possessed_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P76F.has_contact_point">
+<owl:inverseOf rdf:resource="#P76B.provides_access_to"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P78F.is_identified_by">
+<owl:inverseOf rdf:resource="#P78B.identifies"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P83F.had_at_least_duration">
+<owl:inverseOf rdf:resource="#P83B.was_minimum_duration_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P84F.had_at_most_duration">
+<owl:inverseOf rdf:resource="#P84B.was_maximum_duration_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P86F.falls_within">
+<owl:inverseOf rdf:resource="#P86B.contains"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P87F.is_identified_by">
+<owl:inverseOf rdf:resource="#P87B.identifies"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P88F.consists_of">
+<owl:inverseOf rdf:resource="#P88B.forms_part_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P89F.falls_within">
+<owl:inverseOf rdf:resource="#P89B.contains"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P91F.has_unit">
+<owl:inverseOf rdf:resource="#P91B.is_unit_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P92F.brought_into_existence">
+<owl:inverseOf rdf:resource="#P92B.was_brought_into_existence_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P93F.took_out_of_existence">
+<owl:inverseOf rdf:resource="#P93B.was_taken_out_of_existence_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P94F.has_created">
+<owl:inverseOf rdf:resource="#P94B.was_created_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P95F.has_formed">
+<owl:inverseOf rdf:resource="#P95B.was_formed_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P96F.by_mother">
+<owl:inverseOf rdf:resource="#P96B.gave_birth"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P97F.from_father">
+<owl:inverseOf rdf:resource="#P97B.was_father_for"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P98F.brought_into_life">
+<owl:inverseOf rdf:resource="#P98B.was_born"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P99F.dissolved">
+<owl:inverseOf rdf:resource="#P99B.was_dissolved_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P100F.was_death_of">
+<owl:inverseOf rdf:resource="#P100B.died_in"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P101F.had_as_general_use">
+<owl:inverseOf rdf:resource="#P101B.was_use_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P102F.has_title">
+<owl:inverseOf rdf:resource="#P102B.is_title_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P103F.was_intended_for">
+<owl:inverseOf rdf:resource="#P103B.was_intention_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P104F.is_subject_to">
+<owl:inverseOf rdf:resource="#P104B.applies_to"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P105F.right_held_by">
+<owl:inverseOf rdf:resource="#P105B.has_right_on"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P106F.is_composed_of">
+<owl:inverseOf rdf:resource="#P106B.forms_part_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P107F.has_current_or_former_member">
+<owl:inverseOf rdf:resource="#P107B.is_current_or_former_member_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P108F.has_produced">
+<owl:inverseOf rdf:resource="#P108B.was_produced_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P109F.has_current_or_former_curator">
+<owl:inverseOf rdf:resource="#P109B.is_current_or_former_curator_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P110F.augmented">
+<owl:inverseOf rdf:resource="#P110B.was_augmented_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P111F.added">
+<owl:inverseOf rdf:resource="#P111B.was_added_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P112F.diminished">
+<owl:inverseOf rdf:resource="#P112B.was_diminished_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P113F.removed">
+<owl:inverseOf rdf:resource="#P113B.was_removed_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P115F.finishes">
+<owl:inverseOf rdf:resource="#P115B.is_finished_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P116F.starts">
+<owl:inverseOf rdf:resource="#P116B.is_started_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P117F.occurs_during">
+<owl:inverseOf rdf:resource="#P117B.includes"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P118F.overlaps_in_time_with">
+<owl:inverseOf rdf:resource="#P118B.is_overlapped_in_time_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P119F.meets_in_time_with">
+<owl:inverseOf rdf:resource="#P119B.is_met_in_time_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P120F.occurs_before">
+<owl:inverseOf rdf:resource="#P120B.occurs_after"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P123F.resulted_in">
+<owl:inverseOf rdf:resource="#P123B.resulted_from"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P124F.transformed">
+<owl:inverseOf rdf:resource="#P124B.was_transformed_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P125F.used_object_of_type">
+<owl:inverseOf rdf:resource="#P125B.was_type_of_object_used_in"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P126F.employed">
+<owl:inverseOf rdf:resource="#P126B.was_employed_in"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P127F.has_broader_term">
+<owl:inverseOf rdf:resource="#P127B.has_narrower_term"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P128F.carries">
+<owl:inverseOf rdf:resource="#P128B.is_carried_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P129F.is_about">
+<owl:inverseOf rdf:resource="#P129B.is_subject_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P130F.shows_features_of">
+<owl:inverseOf rdf:resource="#P130B.features_are_also_found_on"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P131F.is_identified_by">
+<owl:inverseOf rdf:resource="#P131B.identifies"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P134F.continued">
+<owl:inverseOf rdf:resource="#P134B.was_continued_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P135F.created_type">
+<owl:inverseOf rdf:resource="#P135B.was_created_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P136F.was_based_on">
+<owl:inverseOf rdf:resource="#P136B.supported_type_creation"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P137F.exemplifies">
+<owl:inverseOf rdf:resource="#P137B.is_exemplified_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P138F.represents">
+<owl:inverseOf rdf:resource="#P138B.has_representation"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P140F.assigned_attribute_to">
+<owl:inverseOf rdf:resource="#P140B.was_attributed_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P141F.assigned">
+<owl:inverseOf rdf:resource="#P141B.was_assigned_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P142F.used_constituent">
+<owl:inverseOf rdf:resource="#P142B.was_used_in"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P143F.joined">
+<owl:inverseOf rdf:resource="#P143B.was_joined_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P144F.joined_with">
+<owl:inverseOf rdf:resource="#P144B.gained_member_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P145F.separated">
+<owl:inverseOf rdf:resource="#P145B.left_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P146F.separated_from">
+<owl:inverseOf rdf:resource="#P146B.lost_member_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P147F.curated">
+<owl:inverseOf rdf:resource="#P147B.was_curated_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P148F.has_component">
+<owl:inverseOf rdf:resource="#P148B.is_component_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P14F.1_carried_out_by_as_author">
+<owl:inverseOf rdf:resource="#P14B.1_performed_as_author"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#P14F.1_carried_out_by_as_press">
+<owl:inverseOf rdf:resource="#P14B.1_performed_as_press"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F1F.is_derivative_of">
+<owl:inverseOf rdf:resource="#F1B.has_derivative"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F4F.is_composed_of">
+<owl:inverseOf rdf:resource="#F4B.is_component_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F5F.consists_of_shows_features_of">
+<owl:inverseOf rdf:resource="#F5B.forms_part_of_shows_features_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F6F.has_location">
+<owl:inverseOf rdf:resource="#F6B.is_location_of"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F7F.Actor_from_Place">
+<owl:inverseOf rdf:resource="#F7B.Place_hosts_Actor"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F8F.Thing_from_Place">
+<owl:inverseOf rdf:resource="#F8B.Place_Hosts_Thing"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F9F.Thing_from_Actor">
+<owl:inverseOf rdf:resource="#F9B.Actor_is_origin_of_Thing"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F10F.Thing_createdIn_Event">
+<owl:inverseOf rdf:resource="#F10B.Event_is_origin_of_Thing"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F11F.Actor_createdIn_Event">
+<owl:inverseOf rdf:resource="#F11B.Event_is_origin_of_Actor"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F12F.Event_from_Place">
+<owl:inverseOf rdf:resource="#F12B.Place_hosts_Event"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F13F.Event_by_Actor">
+<owl:inverseOf rdf:resource="#F13B.Actor_performed_Event"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F14F.Thing_from_Event">
+<owl:inverseOf rdf:resource="#F14B.Event_is_origin_of_Thing"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F15F.refers_to">
+<owl:inverseOf rdf:resource="#F15B.is_referred_to_by"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F16F.Event_has_Material">
+<owl:inverseOf rdf:resource="#F16B.Material_in_Event"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#F17F.Thing_is_made_of_Material">
+<owl:inverseOf rdf:resource="#F17B.Material_in_Thing"/>
+</rdf:Description>
+
+
+<rdf:Description rdf:about="#F18F.Thing_P31_P16_P39_P92_Event">
+<owl:inverseOf rdf:resource="#F18B.Event_P31_P16_P39_P92_Thing"/>
+</rdf:Description>
+
+
+
+</rdf:RDF>

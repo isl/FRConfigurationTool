@@ -1,0 +1,36 @@
+#
+# Sesame configuration template for a owlim repository
+# Notes:
+#    owlim:ruleset param is overwritten by -Druleset param int the JAVA_OPTS env-variable
+#    To use owlim without initial ontologies, just remove the owlim:defaultNS and owlim:imports parameters.
+#
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rep: <http://www.openrdf.org/config/repository#>.
+@prefix sr: <http://www.openrdf.org/config/repository/sail#>.
+@prefix sail: <http://www.openrdf.org/config/sail#>.
+@prefix owlim: <http://www.ontotext.com/trree/owlim#>.
+
+[] a rep:Repository ;
+   rep:repositoryID "{%Repository ID|owlim%}" ;
+   rdfs:label "{%Repository title|Owlim Store%}" ;
+   rep:repositoryImpl [
+      rep:repositoryType "openrdf:SailRepository" ;
+      sr:sailImpl [
+         sail:sailType "swiftowlim:Sail" ;
+         owlim:ruleset "{%Ruleset|rdfs|owl-horst|owl-max|EDIT_THE_VALUE_IN_owlim.ttl|../ontotext_owlim/Rules_custom.pie%}" ;
+         owlim:partialRDFS  "{%Partial RDFS|false%}" ;
+         owlim:storage-folder "{%Storage folder|owlim-storage%}" ;
+         owlim:console-thread "{%Console thread|false%}" ;
+         owlim:repository-type "{%Repository type|in-memory-repository%}" ;
+owlim:base-URL "<http://www.3d-coform.eu>" ;
+owlim:noPersist "{%No Persistence|true|false%}" ;
+owlim:new-triples-file "new-triples-file.nt" ;
+owlim:entity-index-size "200000" ;
+owlim:jobsize "200" ;
+
+owlim:defaultNS "{%defaultNS(';'delimited)|<http://www.w3.org/2002/07/owl#>;<http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#>;<http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#>;<http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CRMdig.rdfs#>;<http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#>;<http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CRMdig.rdfs#>;<http://www.w3.org/2004/02/skos/core#>%}";
+owlim:imports "{%imports(';' delimited)|../ontotext_owlim/ontology/owl.rdfs;../ontotext_owlim/ontology/3D-COFORM_CIDOC-CRM.rdfs;../ontotext_owlim/ontology/3D-COFORM_CRMext.rdfs;../ontotext_owlim/ontology/3D-COFORM_CRMdig.rdfs;../ontotext_owlim/ontology/crm_reasoning.rdf;../ontotext_owlim/ontology/crmdig_reasoning.rdf;../ontotext_owlim/ontology/skos.rdf%}" ;
+
+      ]
+   ].
+skos     :  http://www.w3.org/2004/02/skos/core#

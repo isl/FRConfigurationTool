@@ -1,0 +1,807 @@
+<?xml version="1.0"?>
+<!--
+CRMdig 2.5 Encoded in RDFS
+
+RDFS created by FORTH-ICS Thursday December 2, 2010
+
+Encoding Rules:
+1. The RDF spelling rules do not allow blanks. Hence we have replaced them by underscores.
+   The blank between the concept identifier and concept name is replaced by dot.
+   For instance "D7.Digital_Machine_Event" or "P2B.is_type_of".
+
+2. RDF does not allow to instantiate properties beginning from a range value.
+   Therefore, each CRMdig property is represented as two RDFS properties.
+   For instance "L2 used as source (was source for)" is represented as:
+   "L2F.used_as_source" for the domain to range direction and "L2B.was_source_for" for the range to domain direction.
+
+-->
+
+<rdf:RDF xml:lang="en" 
+			xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+			xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+			xml:base="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CRMdig.rdfs">
+
+<rdfs:Class rdf:ID="D1.Digital_Object">
+	<rdfs:comment>This class comprises identifiable immaterial items that can be represented as sets of bit sequences, 
+	such as data sets, e-texts, images, audio or video items, software, etc., and are documented as single units. 
+	Any aggregation of instances of D1 Digital Object into a whole treated as single unit is also regarded as an instance of D1 Digital Object. 
+	This means that for instance, the content of a DVD, an XML file on it, and an element of this file, are regarded as distinct instances of 
+	D1 Digital Object, mutually related by the P106 is composed of (forms part of) property.
+A D1 Digital Object does not depend on a specific physical carrier, and it can exist on one or more carriers simultaneously.
+</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E73.Information_Object"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D2.Digitization_Process">
+	<rdfs:comment>This class comprises events that result in the creation of instances of D9 Data Object that 
+	represent the appearance and/or form of an instance of E18 Physical Thing such as paper documents, statues, buildings, paintings, etc. 
+	A particular case is the analogue-to-digital conversion of audiovisual material.
+	This class represents the transition from a material thing to an immaterial representation of it. 
+	The characteristic subsequent processing steps on digital objects are regarded as instances of D3 Formal Derivation.
+</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D11.Digital_Measurement_Event"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D3.Formal_Derivation">
+	<rdfs:comment>This class comprises events that result in the creation of a D1 Digital Object from another one following a deterministic algorithm, 
+	such that the resulting instance of digital object shares representative properties with the original object. 
+	In other words, this class describes the transition from an immaterial object referred to by property L21 used as derivation source (was derivation source for) 
+	to another immaterial object referred to by property L22 created derivative (was derivative created by) preserving the 
+	representation of some things but in a different form. Characteristic examples are colour corrections, contrast changes and resizing of images.
+	</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D10.Software_Execution"/>
+</rdfs:Class>
+<!-- DELETED
+<rdfs:Class rdf:ID="D4.Norm">
+	<rdfs:comment></rdfs:comment>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D5.Copyright">
+	<rdfs:comment></rdfs:comment>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D6.Copying">
+	<rdfs:comment></rdfs:comment>
+</rdfs:Class>
+-->
+<rdfs:Class rdf:ID="D7.Digital_Machine_Event">
+	<rdfs:comment>This class comprises events that happen on physical digital devices following a human activity that intentionally caused its 
+	immediate or delayed initiation and results in the creation of a new instance of D1 Digital Object on behalf of the human actor. 
+	The input of a D7 Digital Machine Event may be parameter settings and/or data to be processed. 
+	Some D7 Digital Machine Events may form part of a wider E65 Creation event. 
+	In this case, all machine output of the partial events is regarded as creation of the overall activity.
+	</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E11.Modification"/>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E65.Creation"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D8.Digital_Device">
+	<rdfs:comment>This class comprises identifiable material items such as computers, scanners, cameras, etc. that 
+	have the capability to process or produce instances of  D1 Digital Object.
+	</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E22.Man-Made_Object"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D9.Data_Object">
+	<rdfs:comment>This class comprises instances of D1 Digital Object that are the direct result of a digital 
+	measurement or a formal derivative of it, containing quantitative properties of some physical things or other constellations of matter.
+	</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+	<rdfs:subClassOf rdf:resource="#D1.Digital_Object"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D10.Software_Execution">
+	<rdfs:comment>This class comprises events by which a digital device runs a software program or a series of  computing 
+	operations on a digital object  as a single task, which is completely determined by its digital input, 
+	the software and the generic properties of the device. 
+	</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D7.Digital_Machine_Event"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D11.Digital_Measurement_Event">
+	<rdfs:comment>This class comprises actions measuring physical properties using a digital device, 
+	that are determined by a systematic procedure and creates an instance of D9 Data Object, 
+	which is stored on an instance of D13 Digital Information Carrier. 
+	In contrast to instances of D10 Software Execution, environmental factors have an intended influence on the outcome of an instance of D11 Digital Measurement Event. 
+	Measurement devices may include running distinct software, such as the RAW to JPEG conversion in digital cameras. 
+	In this case, the event is regarded as instance of both classes, D10 Software Execution and D11 Digital Measurement Event.
+	</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E16.Measurement"/>
+	<rdfs:subClassOf rdf:resource="#D7.Digital_Machine_Event"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D12.Data_Transfer_Event">
+	<rdfs:comment>This class comprises events that transfer a digital object from one digital carrier to another. 
+	Normally, the digital object remains the same. If in general or by observation the transfer implies or has 
+	implied some data corruption, the change of the digital objects may be documented distinguishing input and output 
+	rather than instantiating the property L14 transferred (was transferred by). 
+	</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D7.Digital_Machine_Event"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D13.Digital_Information_Carrier">
+	<rdfs:comment>This class comprises all instances of E84 Information Carrier that are explicitly designed to be 
+	used as persistent digital physical carriers of instances of D1 Digital Object. 
+	A D13 Digital Information Carrier may or may not contain information, e.g., an empty diskette.
+	</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E84.Information_Carrier"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D14.Software">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D1.Digital_Object"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D15.Repository_Object">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D1.Digital_Object"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D16.Reproducible_Software_Event">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D10.Software_Execution"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D17.Temporary_Position">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E2.Temporal_Entity"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D18.Relative_Place">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E53.Place"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D19.Corporate_Name">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E82.Actor_Appellation"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D20.Registration_Number">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E82.Actor_Appellation"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D21.Person_Name">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E82.Actor_Appellation"/>
+</rdfs:Class>
+
+<!-- DELETED
+<rdfs:Class rdf:ID="D22.Serial_Number">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E42.Identifier"/>
+</rdfs:Class>
+-->
+
+<rdfs:Class rdf:ID="D23.Room">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E53.Place"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D24.GPS_coordinates">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E53.Place"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D25.Archaeological_Site_Registration">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E53.Place"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D26.Orientation">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D27.Calibration_Process">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D11.Digital_Measurement_Event"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D28.Digital_Documentation_Process">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D11.Digital_Measurement_Event"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D29.Annotation_Object">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D1.Digital_Object"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D30.Annotation_Event">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E65.Creation"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D31.Knowledge_Object">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D29.Annotation_Object"/>
+</rdfs:Class>
+<rdfs:Class rdf:ID="D32.Knowledge_Extraction">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D31.Knowledge_Object"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:ID="D35.Area">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subClassOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E26.Physical_Feature"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:ID="D38.Same-As">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D29.Annotation_Object"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:ID="D39.Thumbnail">
+	<rdfs:comment></rdfs:comment>
+	<rdfs:subClassOf rdf:resource="#D1.Digital_Object"/>
+</rdfs:Class>
+
+
+<rdf:Property rdf:ID="L1F.digitized">
+<rdfs:comment>This property associates an instance of D2 Digitization Process with an instance of E18 Physical Thing which is a material thing.  
+This property is a specialisation of P39 measured (was measured by).
+</rdfs:comment>
+	<rdfs:domain rdf:resource="#D2.Digitization_Process"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E18.Physical_Thing"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P39F.measured"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L1B.was_digitized_by">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E18.Physical_Thing"/>
+	<rdfs:range rdf:resource="#D2.Digitization_Process"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P39B.was_measured_by"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L2F.used_as_source">
+	<rdfs:domain rdf:resource="#D10.Software_Execution"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="#L10F.had_input"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L2B.was_source_for">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D10.Software_Execution"/>
+	<rdfs:subPropertyOf rdf:resource="#L10B.was_input_of"/>
+</rdf:Property>
+<!--
+<rdf:Property rdf:ID="L3F.is_derivative_of">
+<rdfs:comment>
+This property associates an instance of D1 Digital Object which modifies the content of another instance of D1 Digital Object with the latter. 
+This property is a shortcut of D1 Digital Object L10B was input of D7 Digital Machine Event L11F had output D1 Digital Object. 
+</rdfs:comment>
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P130F.shows_features_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L3B.has_derivative">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P130B.features_are_also_found_on"/>
+</rdf:Property>
+-->
+<rdf:Property rdf:ID="L4F.has_preferred_label">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range  rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>	
+</rdf:Property>
+
+<!-- DELETED
+<rdf:Property rdf:ID="L8F.copies_to">
+	<rdfs:domain rdf:resource="#D6.Copying"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E73.Information_Object"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L8B.is_created_by">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E73.Information_Object"/>
+	<rdfs:range rdf:resource="#D6.Copying"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L9F.has_validity">
+	<rdfs:domain rdf:resource="#D4.Norm"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E52.Time-Span"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L9B.is_validation_period_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E52.Time-Span"/>
+	<rdfs:range rdf:resource="#D4.Norm"/>
+</rdf:Property>
+-->
+
+<rdf:Property rdf:ID="L10F.had_input">
+	<rdfs:domain rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P16F.used_specific_object"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L10B.was_input_of">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P16B.was_used_for"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L11F.had_output">
+	<rdfs:domain rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P94F.has_created"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L11B.was_output_of">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P94B.was_created_by"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L12F.happened_on_device">
+	<rdfs:domain rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:range rdf:resource="#D8.Digital_Device"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P12F.occurred_in_the_presence_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L12B.was_device_for">
+	<rdfs:domain rdf:resource="#D8.Digital_Device"/>
+	<rdfs:range rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P12B.was_present_at"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L13F.used_parameters">
+	<rdfs:domain rdf:resource="#D10.Software_Execution"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="#L10F.had_input"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L13B.parameters_for">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D10.Software_Execution"/>
+	<rdfs:subPropertyOf rdf:resource="#L10B.was_input_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L14F.transferred">
+	<rdfs:domain rdf:resource="#D12.Data_Transfer_Event"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="#L10F.had_input"/>
+	<rdfs:subPropertyOf rdf:resource="#L11F.had_output"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L14B.was_transferred_by">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D12.Data_Transfer_Event"/>
+	<rdfs:subPropertyOf rdf:resource="#L10B.was_input_of"/>
+	<rdfs:subPropertyOf rdf:resource="#L11B.was_output_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L15F.has_sender">
+	<rdfs:domain rdf:resource="#D12.Data_Transfer_Event"/>
+	<rdfs:range rdf:resource="#D8.Digital_Device"/>
+	<rdfs:subPropertyOf rdf:resource="#L12F.happened_on_device"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L15B.was_sender_for">
+	<rdfs:domain rdf:resource="#D8.Digital_Device"/>
+	<rdfs:range rdf:resource="#D12.Data_Transfer_Event"/>
+	<rdfs:subPropertyOf rdf:resource="#L12B.was_device_for"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L16F.has_receiver">
+	<rdfs:domain rdf:resource="#D12.Data_Transfer_Event"/>
+	<rdfs:range rdf:resource="#D8.Digital_Device"/>
+	<rdfs:subPropertyOf rdf:resource="#L12F.happened_on_device"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L16B.was_receiver_for">
+	<rdfs:domain rdf:resource="#D8.Digital_Device"/>
+	<rdfs:range rdf:resource="#D12.Data_Transfer_Event"/>
+	<rdfs:subPropertyOf rdf:resource="#L12B.was_device_for"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L17F.measured_thing_of_type">
+	<rdfs:domain rdf:resource="#D11.Digital_Measurement_Event"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E55.Type"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P125F.used_object_of_type"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L17B.was_type_of_thing_measured_by">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E55.Type"/>
+	<rdfs:range rdf:resource="#D11.Digital_Measurement_Event"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P125B.was_type_of_object_used_in"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L18F.has_modified">
+	<rdfs:domain rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:range rdf:resource="#D13.Digital_Information_Carrier"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P31F.has_modified"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L18B.was_modified_by">
+	<rdfs:domain rdf:resource="#D13.Digital_Information_Carrier"/>
+	<rdfs:range rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P31B.was_modified_by"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L19F.stores">
+	<rdfs:domain rdf:resource="#D13.Digital_Information_Carrier"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P128F.carries"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L19B.is_stored_on">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D13.Digital_Information_Carrier"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P128B.is_carried_by"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L20F.has_created">
+	<rdfs:domain rdf:resource="#D11.Digital_Measurement_Event"/>
+	<rdfs:range rdf:resource="#D9.Data_Object"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P40F.observed_dimension"/>
+	<rdfs:subPropertyOf rdf:resource="#L11F.had_output"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L20B.was_created_by">
+	<rdfs:domain rdf:resource="#D9.Data_Object"/>
+	<rdfs:range rdf:resource="#D11.Digital_Measurement_Event"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P40B.was_observed_in"/>
+	<rdfs:subPropertyOf rdf:resource="#L11B.was_output_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L21F.used_as_derivation_source">
+	<rdfs:domain rdf:resource="#D3.Formal_Derivation"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="#L2F.used_as_source"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L21B.was_derivation_source_for">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D3.Formal_Derivation"/>
+	<rdfs:subPropertyOf rdf:resource="#L2B.was_source_for"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L22F.created_derivative">
+	<rdfs:domain rdf:resource="#D3.Formal_Derivation"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="#L11F.had_output"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L22B.was_derivative_created_by">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D3.Formal_Derivation"/>
+	<rdfs:subPropertyOf rdf:resource="#L11B.was_output_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L23F.used_software_or_firmware">
+	<rdfs:domain rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:range rdf:resource="#D14.Software"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P16F.used_specific_object"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L23B.was_software_or_firmware_used_by">
+	<rdfs:domain rdf:resource="#D14.Software"/>
+	<rdfs:range rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P16B.was_used_for"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L24F.created_logfile">
+	<rdfs:domain rdf:resource="#D10.Software_Execution"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="#L11F.had_output"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L24B.was_logfile_created_by">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D10.Software_Execution"/>
+	<rdfs:subPropertyOf rdf:resource="#L11B.was_output_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L25F.located_object">
+	<rdfs:domain rdf:resource="#D17.Temporary_Position"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E18.Physical_Thing"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L25B.was_object_located_at">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E18.Physical_Thing"/>
+	<rdfs:range rdf:resource="#D17.Temporary_Position"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L26F.had_place">
+	<rdfs:domain rdf:resource="#D17.Temporary_Position"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E53.Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L26B.was_place_at">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E53.Place"/>
+	<rdfs:range rdf:resource="#D17.Temporary_Position"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L27F.occurred_during">
+	<rdfs:domain rdf:resource="#D17.Temporary_Position"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E5.Event"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P117F.occurs_during"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L27B.used_temporary_position">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E5.Event"/>
+	<rdfs:range rdf:resource="#D17.Temporary_Position"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P117B.includes"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L28F.has_orientation">
+	<rdfs:domain rdf:resource="#D18.Relative_Place"/>
+	<rdfs:range rdf:resource="#D26.Orientation"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L28B.is_orientation_of">
+	<rdfs:domain rdf:resource="#D26.Orientation"/>
+	<rdfs:range rdf:resource="#D18.Relative_Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L29F.has_responsible_organization">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E7.Activity"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E40.Legal_Body"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P14F.carried_out_by"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L29B.is_responsible_organization_for">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E40.Legal_Body"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E7.Activity"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P14B.performed"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L30F.has_operator">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E7.Activity"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E21.Person"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P14F.carried_out_by"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L30B.is_operator_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E21.Person"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E7.Activity"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P14B.performed"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L31F.has_starting_date-time">
+	<rdfs:domain rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L32F.has_ending_date-time">
+	<rdfs:domain rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L33F.has_maker">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E72.Legal_Object"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E39.Actor"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L33B.is_maker_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E39.Actor"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E72.Legal_Object"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L34F.is_position_relative_to_object">
+	<rdfs:domain rdf:resource="#D18.Relative_Place"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E18.Physical_Thing"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L34B.is_reference_object_for_position">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E18.Physical_Thing"/>
+	<rdfs:range rdf:resource="#D18.Relative_Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L35F.is_position_relative_to_position">
+	<rdfs:domain rdf:resource="#D18.Relative_Place"/>
+	<rdfs:range rdf:resource="#D17.Temporary_Position"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L35B.is_reference_position_for_position">
+	<rdfs:domain rdf:resource="#D17.Temporary_Position"/>
+	<rdfs:range rdf:resource="#D18.Relative_Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L36F.has_coordinate_system">
+	<rdfs:domain rdf:resource="#D18.Relative_Place"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E55.Type"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P2F.has_type"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L36B.is_coordinate_system_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E55.Type"/>
+	<rdfs:range rdf:resource="#D18.Relative_Place"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P2B.is_type_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L37F.has_coordinates1">
+	<rdfs:domain rdf:resource="#D18.Relative_Place"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L37B.is_coordinates1_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+	<rdfs:range rdf:resource="#D18.Relative_Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L38F.has_coordinates2">
+	<rdfs:domain rdf:resource="#D18.Relative_Place"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L38B.is_coordinates2_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+	<rdfs:range rdf:resource="#D18.Relative_Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L39F.has_coordinates3">
+	<rdfs:domain rdf:resource="#D18.Relative_Place"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L39B.is_coordinates3_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+	<rdfs:range rdf:resource="#D18.Relative_Place"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L40F.has_rotation_angle">
+	<rdfs:domain rdf:resource="#D26.Orientation"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L40B.is_rotation_angle_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+	<rdfs:range rdf:resource="#D26.Orientation"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L41F.has_azimuth">
+	<rdfs:domain rdf:resource="#D26.Orientation"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L41B.is_azimuth_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+	<rdfs:range rdf:resource="#D26.Orientation"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L42F.has_inclination">
+	<rdfs:domain rdf:resource="#D26.Orientation"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L42B.is_inclination_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E54.Dimension"/>
+	<rdfs:range rdf:resource="#D26.Orientation"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L43F.annotates">
+	<rdfs:domain rdf:resource="#D29.Annotation_Object"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L43B.is_annotated_by">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="#D29.Annotation_Object"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L44F.extracts_from">
+	<rdfs:domain rdf:resource="#D32.Knowledge_Extraction"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E73.Information_Object"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L44B.is_extracted_from">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E73.Information_Object"/>
+	<rdfs:range rdf:resource="#D32.Knowledge_Extraction"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="L47F.has_comment">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="L48F.created_annotation">
+	<rdfs:domain rdf:resource="#D30.Annotation_Event"/>
+	<rdfs:range rdf:resource="#D29.Annotation_Object"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P94F.has_created"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L48B.was_annotation_created_by">
+	<rdfs:domain rdf:resource="#D29.Annotation_Object"/>
+	<rdfs:range rdf:resource="#D30.Annotation_Event"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P94B.was_created_by"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L49F.is_primary_area_of">
+	<rdfs:domain rdf:resource="#D35.Area"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P106B.forms_part_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L49B.has_primary_area">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D35.Area"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P106F.is_composed_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L50F.is_propagated_area_of">
+	<rdfs:domain rdf:resource="#D35.Area"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P106B.forms_part_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L50B.has_propagated_area">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D35.Area"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P106F.is_composed_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L51F.has_first_name">
+	<rdfs:domain rdf:resource="#D21.Person_Name"/>
+	<rdfs:range  rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>	
+</rdf:Property>
+
+<rdf:Property rdf:ID="L52F.has_last_name">
+	<rdfs:domain rdf:resource="#D21.Person_Name"/>
+	<rdfs:range  rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="#L4F.has_preferred_label"/>	
+</rdf:Property>
+
+<rdf:Property rdf:ID="L53F.is_not_uniquely_identified_by">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range  rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="L54F.is_same-as">
+	<rdfs:domain rdf:resource="#D38.Same-As"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="L54B.is_same-as">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="#D38.Same-As"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L55F.has_inventory_no">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range  rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="#L53F.is_not_uniquely_identified_by"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="L56F.has_pixel_width">
+	<rdfs:domain rdf:resource="#D9.Data_Object"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P90F.has_value"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="L57F.has_pixel_height">
+	<rdfs:domain rdf:resource="#D9.Data_Object"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P90F.has_value"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="L58F.has_thumbnail">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D39.Thumbnail"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="L58B.is_thumbnail_of">
+	<rdfs:domain rdf:resource="#D39.Thumbnail"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="L59F.has_serial_number">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E22.Man-Made_Object"/>
+	<rdfs:range  rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="#L53F.is_not_uniquely_identified_by"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="L60F.documents">
+	<rdfs:domain rdf:resource="#D2.Digitization_Process"/>
+	<rdfs:range  rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P140F.assigned_attribute_to"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="L60B.is_documented_by">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range  rdf:resource="#D2.Digitization_Process"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P140B.was_attributed_by"/>	
+</rdf:Property>
+<rdf:Property rdf:ID="L61F.was_ongoing_at">
+	<rdfs:domain rdf:resource="#D7.Digital_Machine_Event"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L62F.in_the_role_of">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E21.Person"/>
+	<rdfs:range rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E55.Type"/>
+</rdf:Property>
+
+
+<!--
+The following are very specific extensions (mainly specializations of P3F.has_note) done for 3D-COFORM.
+-->
+<!-- Parameters of Acquisition -->
+<rdf:Property rdf:ID="L70F.has_scan_mode">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L71F.has_color_mode">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L72F.has_registration_mode">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L73F.used_template">
+	<rdfs:domain rdf:resource="#D2.Digitization_Process"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="#L10F.had_input"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L73B.template_for">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D2.Digitization_Process"/>
+	<rdfs:subPropertyOf rdf:resource="#L10B.was_input_of"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L74F.has_number_of_scans">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L75F.used_complete_raw_data">
+	<rdfs:domain rdf:resource="#D2.Digitization_Process"/>
+	<rdfs:range rdf:resource="#D1.Digital_Object"/>
+	<rdfs:subPropertyOf rdf:resource="#L10F.had_input"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L75B.complete_raw_data_for">
+	<rdfs:domain rdf:resource="#D1.Digital_Object"/>
+	<rdfs:range rdf:resource="#D2.Digitization_Process"/>
+	<rdfs:subPropertyOf rdf:resource="#L10B.was_input_of"/>
+</rdf:Property>
+
+<!-- Parameters of Data Processing -->
+<rdf:Property rdf:ID="L76F.used_scans">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L77F.rejected_scans">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L78F.interactive_data_manipulation">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L79F.has_accuracy_of_registration">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L80F.has_name_of_master_model">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+
+
+<!-- Parameters of final Post Processing -->
+<rdf:Property rdf:ID="L81F.has_data_merging">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L82F.has_data_filtering">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L83F.has_data_simplification">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L84F.has_hole_filling">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+<rdf:Property rdf:ID="L85F.has_further_processing_steps">
+	<rdfs:domain rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#E1.CRM_Entity"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.ics.forth.gr/isl/rdfs/3D-COFORM_CIDOC-CRM.rdfs#P3F.has_note"/>
+</rdf:Property>
+
+
+</rdf:RDF>
+
