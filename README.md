@@ -5,7 +5,7 @@
    repositories, usually based on the RDF/S technology, as in the domain of cultural 
    heritage. ISO21127 (CIDOC Conceptual Reference Model) is a rich conceptual model 
    or ontology) capable of describing the world stored in such repositories. Simpler 
-   models like those consisting only of “core metadata” as in Dublin Core, lack the 
+   models like those consisting only of 'core metadata' as in Dublin Core, lack the 
    expressiveness and the potentiality to integrate the knowledge and to apply 
    reasoning on it. Nevertheless, the more complex structure complicates the information 
    searching: the declarative SPARQL query formulation becomes harder for the user due 
@@ -22,14 +22,14 @@
    a path. Precision improvement can be achieved by creating specializations of the 
    fundamental relationships or by adding more constraints on the queries. To define 
    the paths over the CIDOC-CRM schema that correspond to each fundamental relationship, 
-   we have created a “paths’ language” which is designed to be easy to write and to be 
+   we have created a 'paths language' which is designed to be easy to write and to be 
    comprehended by non-expert users. Thereafter, we constructed a tool that utilizes 
    this language, permits the editing and validation of the fundamental relationships 
    and their translation to SPARQL and provides extra supportive functions.
    The proposed approach was proven adequate for expressing real research queries 
    originating from independent (to this work) scientists in the domain of cultural 
    heritage. The results of queries performed on repositories consisting of real 
-   metadata were encouraging, showing even 100% recall, when the repository’s information 
+   metadata were encouraging, showing even 100% recall, when the repository's information 
    was well-structured. Moreover we have shown that the usage of combined FRs in the 
    query can improve the precision rate.
 
