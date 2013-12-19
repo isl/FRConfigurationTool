@@ -32,7 +32,7 @@
 
 
 ---------------------------------------------------------------------------
-						SESAMESETUP
+                        SESAMESETUP
 ---------------------------------------------------------------------------
 
 This folder is the set up folder for the sesame repository, used to connect
@@ -54,6 +54,6 @@ It contains the following folders:
   This folder contains the files regarding the rules of the repository, 
   created using OWLIM. Also here we keep the used ontologies schemata.
   
-4)sesame_data and sesame_data_2:
-  -----------------------------
-  Here the repositories are created and their data are kept (mainly in sesame_data_2)
+4)sesame_data:
+  ------------
+  Here the repositories are created and their data are kept 
